@@ -1,0 +1,25 @@
+max
+ps
+
+pub_var=0
+
+do: {
+    pub_var = PUB_VAR + 1
+    ping sodeom.com
+    curl sodeom.com
+}
+
+times: (9) {
+    pub_var = PUB_VAR + 1
+    ping sodeom.com
+    curl https://sodeom.com/
+}
+
+end: {
+    pub_var = PUB_VAR + 1
+    ping sodeom.com
+    curl https://sodeom.com/
+    echo "DDOS sodeom.com with PUB_VAR requests"
+}
+
+wait
