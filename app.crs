@@ -21,5 +21,3 @@ end: {
     curl https://sodeom.com/
     echo "DDOS sodeom.com with PUB_VAR requests"
 }
-
-wait
