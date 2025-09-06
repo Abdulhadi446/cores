@@ -1,15 +1,11 @@
-from utils import DATA, DATA_ARRAY, WAIT, PUB_VAR, DEBUG, END_CODE
+from utils import DATA, DATA_ARRAY, WAIT, PUB_VAR, DEBUG, END_CODE, dbg
 import utils
 import time
 import runcode
 import thread_runner
 import threadc
 import ast
-
-# --- Helper for debug printing ---
-def dbg(msg):
-    if utils.DEBUG:
-        print(msg)
+from coderunner import run_block
 
 # --- Read file once and split into lines ---
 with open("app.crs", "r") as file:
@@ -60,6 +56,6 @@ if utils.WAIT:
     dbg("[Ends] Threaded Code")
 
     dbg(f"\n[Running] End code")
-    runcode.run_block(utils.END_CODE)
+    run_block(utils.END_CODE)
     dbg("[Ends] End code")
     threads_list.clear()

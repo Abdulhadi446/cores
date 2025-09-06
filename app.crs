@@ -1,23 +1,20 @@
 max
-ps
+py,python
 
 pub_var=0
 
 do: {
-    pub_var = PUB_VAR + 1
-    ping sodeom.com
-    curl sodeom.com
+    pub_var = 1
+    print("Hello!")
 }
 
-times: (9) {
-    pub_var = PUB_VAR + 1
-    ping sodeom.com
-    curl https://sodeom.com/
+times: (1) {
+    pub_var = PUB_VAR + 2
+    print("PUB_VAR")
 }
 
 end: {
-    pub_var = PUB_VAR + 1
-    ping sodeom.com
-    curl https://sodeom.com/
-    echo "DDOS sodeom.com with PUB_VAR requests"
+    print("PUB_VAR")
 }
+
+wait
