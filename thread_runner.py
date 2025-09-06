@@ -1,11 +1,9 @@
 # thread_runner.py
 import threading
-import subprocess
 from datetime import datetime
 import re
-import ast
 import utils
-from utils import RUNTIMES, run_cpp_code_fully, DEBUG
+from utils import DEBUG
 from coderunner import run_block
 
 # Lock to prevent console output from multiple threads mixing

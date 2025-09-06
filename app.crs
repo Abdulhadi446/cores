@@ -1,20 +1,25 @@
-max
-py,python
+8
+py
 
-pub_var=0
+pub_var = 0
 
 do: {
     pub_var = 1
     print("Hello!")
 }
 
-times: (1) {
-    pub_var = PUB_VAR + 2
-    print("PUB_VAR")
+times: (5) {
+    pub_var = PUB_VAR + 1
+    print("THREAD NAME:", 'THREAD-NAME')
+    print("THREAD NUMBER:", 'THREAD-NUMBER')
+    print("THREAD NATIVE ID", 'THREAD-NATIVE-ID')
+    print("THREAD IS ALIVE", 'THREAD-IS-ALIVE')
+    print("THREAD DAEMON", 'THREAD-DAEMON')
+    print("THREAD IDENT", 'THREAD-IDENT')
+    print("PUB VAR", 'PUB_VAR')
 }
 
 end: {
-    print("PUB_VAR")
+    print('PUB_VAR')
+    print("Bye!")
 }
-
-wait

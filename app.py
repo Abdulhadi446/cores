@@ -1,6 +1,5 @@
-from utils import DATA, DATA_ARRAY, WAIT, PUB_VAR, DEBUG, END_CODE, dbg
+from utils import dbg
 import utils
-import time
 import runcode
 import thread_runner
 import threadc

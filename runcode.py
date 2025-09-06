@@ -1,6 +1,5 @@
 import re
 import textwrap
-import subprocess
 from utils import dbg
 import utils
 from coderunner import run_block
