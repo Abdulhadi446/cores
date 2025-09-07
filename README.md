@@ -6,17 +6,18 @@ It is built for experimenting with **parallel execution**, **thread variables**,
 ---
 
 ## ✨ Features
-- **Thread-oriented execution model** – every `times:` block spawns threads automatically.  
-- **Global variables** with live updates across threads (`pub_var`, `PUB_VAR`).  
-- **Minimal syntax** with `do`, `times`, `end`, and `wait` blocks.  
-- **Built-in thread metadata** for debugging and introspection:  
-  - `THREAD-NAME`  
-  - `THREAD-NUMBER`  
-  - `THREAD-NATIVE-ID`  
-  - `THREAD-IS-ALIVE`  
-  - `THREAD-DAEMON`  
-  - `THREAD-IDENT`  
-  - `PUB_VAR`  
+
+- **Thread-oriented execution model** – every `times:` block spawns threads automatically.
+- **Global variables** with live updates across threads (`pub_var`, `PUB_VAR`).
+- **Minimal syntax** with `do`, `times`, `end`, and `wait` blocks.
+- **Built-in thread metadata** for debugging and introspection:
+  - `THREAD-NAME`
+  - `THREAD-NUMBER`
+  - `THREAD-NATIVE-ID`
+  - `THREAD-IS-ALIVE`
+  - `THREAD-DAEMON`
+  - `THREAD-IDENT`
+  - `PUB_VAR`
 
 ---
 
@@ -132,3 +133,7 @@ Bye!
     File I/O and networking inside thread blocks.
 
     GPU-like parallel kernel simulation.
+
+## DOCUMENTATION
+
+[https://github.com/Abdulhadi446/cores](Decumentation)
