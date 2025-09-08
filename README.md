@@ -1,16 +1,16 @@
-# CORES Programming Language
+# Cores – Unlocking the Full Potential of Your CPU
 
-**CORES** is a lightweight experimental programming language inspired by **CUDA** concepts but designed to run directly on CPU threads.  
-It is built for experimenting with **parallel execution**, **thread variables**, and **low-level concurrency** using a simple, Python-like syntax.
+**Cores** is an experimental, CPU-focused programming language inspired by **CUDA** concepts. It is designed to leverage **parallel execution**, **thread variables**, and **low-level concurrency** directly on your CPU, with a Python-like minimal syntax.
 
 ---
 
-## ✨ Features
+## Highlights
 
-- **Thread-oriented execution model** – every `times:` block spawns threads automatically.
-- **Global variables** with live updates across threads (`pub_var`, `PUB_VAR`).
-- **Minimal syntax** with `do`, `times`, `end`, and `wait` blocks.
-- **Built-in thread metadata** for debugging and introspection:
+- **Threaded Execution:** Automatically run blocks in parallel using `times:`.
+- **Shared Variables:** Use `pub_var`, `pub_json`, `pub_array`, `pub_bool`, `pub_int`, `pub_float`, `pub_str` and their uppercase PUB\_\* counterparts for global state.
+- **Lightweight Syntax:** Minimal constructs like `do:`, `times:`, `end:`, and `wait` blocks.
+- **Thread Metadata Access:** Inspect threads in runtime with variables such as:
+
   - `THREAD-NAME`
   - `THREAD-NUMBER`
   - `THREAD-NATIVE-ID`
@@ -19,121 +19,50 @@ It is built for experimenting with **parallel execution**, **thread variables**,
   - `THREAD-IDENT`
   - `PUB_VAR`
 
+- **Dynamic Variable Assignments:** Use `ASSIGN` to evaluate and store expressions at runtime.
+- **Line Management:** Use `RM-LINE` to remove lines after execution.
+- **CPU Power Utilization:** Designed to maximize your CPU cores without the complexity of GPU programming.
+
 ---
 
-## 🔧 Syntax
+## Core Concepts
 
-```
-max
-py
-pub_var=0
+1. **Blocks:**
 
-do: {
-    pub_var = 1
-    print("Hello!")
-}
+   - `do:` — Defines a code block that runs immediately.
+   - `times: (N)` — Executes the block N times in separate threads.
+   - `end:` — Concludes a code block.
+   - `wait` — Ensures all threads finish before continuing.
 
-times: (9) {
-    print("\n")
-    pub_var = PUB_VAR + 1
-    print("PUB-VAR: ", PUB_VAR)
-    print("Info About me:")
-    Name = "THREAD-NAME"
-    Number = "THREAD-NUMBER"
-    NativeNumber = "THREAD-NATIVE-ID"
-    AmIAlive = "THREAD-IS-ALIVE"
-    deamon = "THREAD-DAEMON"
-    MyID = "THREAD-IDENT"
-    PublicVar = "PUB_VAR"
+2. **Global Variables:**
 
-    print(Name, Number, NativeNumber, AmIAlive, deamon, MyID, PublicVar)
-    print("\n")
-}
+   - Variables starting with `pub_` are automatically shared across threads.
+   - The uppercase PUB\_\* versions can be used in expressions and prints.
 
-end: {
-    print("Bye!")
-}
+3. **Special Keywords:**
 
-wait
-```
+   - `ASSIGN` — Marks a line to execute as a runtime assignment.
+   - `RM-LINE` — Marks a line to be removed from the final code after execution.
 
-▶️ Example Output
+4. **Thread Info:**
 
-When the above code runs, the threads will execute concurrently and output will look like:
+   - Access metadata for each thread, including name, ID, status, and daemon flag.
 
-```
-Hello!
+5. **Execution Flow:**
 
+   - Replace PUB\_\* placeholders first.
+   - Execute ASSIGN lines.
+   - Extract and update pub\_\* variables.
+   - Remove lines marked with RM-LINE.
 
-PUB-VAR:  1
-Info About me:
-Thread-3 (thread_main) 3 32860 True True 32860 1
+---
 
+## Version
 
-PUB-VAR:  1
-Info About me:
-Thread-6 (thread_main) 6 19612 True True 19612 1
+- Current Stable: **v1.0**
 
+---
 
-PUB-VAR:  1
-Info About me:
-Thread-1 (thread_main) 1 20720 True True 20720 1
+## Tagline
 
-
-PUB-VAR:  1
-Info About me:
-Thread-4 (thread_main) 4 15716 True True 15716 1
-
-
-PUB-VAR:  1
-Info About me:
-Thread-2 (thread_main) 2 1324 True True 1324 1
-
-
-PUB-VAR:  1
-Info About me:
-Thread-5 (thread_main) 5 8092 True True 8092 1
-
-
-PUB-VAR:  1
-Info About me:
-Thread-7 (thread_main) 7 26424 True True 26424 1
-
-
-PUB-VAR:  1
-Info About me:
-Thread-8 (thread_main) 8 15868 True True 15868 1
-
-
-PUB-VAR:  1
-Info About me:
-Thread-9 (thread_main) 9 27796 True True 27796 1
-
-
-Bye!
-```
-
-⚠️ Note: Because threads run concurrently, the order of output is not guaranteed. Each run may produce slightly different interleaving of lines.
-🧩 Keywords
-
-    do: → Defines an initialization block (runs once before threading).
-
-    times: (N) → Spawns N threads that run the block concurrently.
-
-    end: → Defines a cleanup block (runs once after threading).
-
-    wait → Ensures the main process waits for all threads to finish.
-
-🚀 Future Goals
-
-    Add support for async do blocks.
-
-    Shared memory handling beyond PUB_VAR.
-
-    File I/O and networking inside thread blocks.
-
-    GPU-like parallel kernel simulation.
-
-## DOCUMENTATION
-
-[Decumentation](documentation.md)
+**Cores – Unlocking the Full Potential of Your CPU**
