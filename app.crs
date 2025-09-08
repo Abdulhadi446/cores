@@ -1,25 +1,45 @@
-8
-py
+max
+py,python
 
-pub_var = 0
+pub_var = {'x': 10, 'y': 20, 'vel_x': 3, 'vel_y': 2, 'width':800, 'height': 600}
+pub_json = {"ball_color": "red", "score": 0}
+pub_array = [1, 2, 3, 4, 5]
+pub_bool = True
+pub_int = 42
+pub_float = 3.14
+pub_str = 'Hello DSL'
 
 do: {
-    pub_var = 1
-    print("Hello!")
+    print("PUB_VAR")
+    print("PUB_JSON")
+    print('PUB_ARRAY')
+    print("PUB_BOOL")
+    print("PUB_INT")
+    print("PUB_FLOAT")
+    print(PUB_STR) # RM-LINE
 }
 
-times: (5) {
-    pub_var = PUB_VAR + 1
-    print("THREAD NAME:", 'THREAD-NAME')
-    print("THREAD NUMBER:", 'THREAD-NUMBER')
-    print("THREAD NATIVE ID", 'THREAD-NATIVE-ID')
-    print("THREAD IS ALIVE", 'THREAD-IS-ALIVE')
-    print("THREAD DAEMON", 'THREAD-DAEMON')
-    print("THREAD IDENT", 'THREAD-IDENT')
-    print("PUB VAR", 'PUB_VAR')
+times: (1) {
+    print("PUB_VAR")
+    print("PUB_JSON")
+    print('PUB_ARRAY')
+    print("PUB_BOOL")
+    print("PUB_INT")
+    print("PUB_FLOAT")
+    mystr = "Hello, World" # ASSIGN
+    pub_str = mystr + PUB_STR
+    print(PUB_STR)
+    
 }
 
 end: {
-    print('PUB_VAR')
-    print("Bye!")
+    print("PUB_VAR")
+    print("PUB_JSON")
+    print('PUB_ARRAY')
+    print("PUB_BOOL")
+    print("PUB_INT")
+    print("PUB_FLOAT")
+    print(PUB_STR) # RM-LINE
 }
+
+wait

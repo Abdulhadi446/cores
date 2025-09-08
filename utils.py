@@ -1,16 +1,37 @@
+# utils.py
 import os
 import tempfile
 
-PUB_VAR = 0
+
+EXEC_CONTEXT = {}
 DATA = ''
 DATA_ARRAY = ()
 WAIT = False
 END_CODE = "\n"
-DEBUG = False
+DEBUG = True
+CODE_FILES = []
+
+# PUBLIC variables
+PUB_VAR = None
+PUB_BOOL = False
+PUB_INT = 0
+PUB_STR = ''
+PUB_FLOAT = 0.0
+PUB_ARRAY = []
+PUB_JSON = '{}'
+
+import builtins
+
+def safe_print(*args, **kwargs):
+    """Print safely even during interpreter shutdown (ignore stdout errors)."""
+    try:
+        builtins.print(*args, **kwargs)
+    except Exception:
+        pass
 
 def dbg(*args, **kwargs):
     if DEBUG:
-        print(*args, **kwargs)  # forwards everything to print
+        safe_print(*args, **kwargs)  # forwards everything to print
 
 def createTemp(name: str, content: str) -> str:
     # Create a temporary directory

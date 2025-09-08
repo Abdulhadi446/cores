@@ -2,14 +2,15 @@
 import threading
 from datetime import datetime
 import re
-import utils
-from utils import DEBUG
-from coderunner import run_block
 
+import utils
+from utils import DEBUG, safe_print
+from coderunner import run_block
+# Shared execution environment for ASSIGN lines
 # Lock to prevent console output from multiple threads mixing
 print_lock = threading.Lock()
 
-def run_in_thread(code: str, lang: str):
+def run_in_process(code: str, lang: str):
     """Run code in a separate thread with placeholders, PUB_VAR handling, and debug logging."""
 
     def thread_main(code: str, lang: str):
@@ -17,9 +18,12 @@ def run_in_thread(code: str, lang: str):
 
         # Local debug function
         def dbg(msg):
-            if DEBUG:
-                with print_lock:
-                    print(msg)
+            try:
+                if DEBUG:
+                    with print_lock:
+                        safe_print(msg)
+            except:
+                pass
 
         # Extract thread number from thread name
         thread_number_match = re.search(r'Thread-(\d+)', t.name)
@@ -44,7 +48,7 @@ def run_in_thread(code: str, lang: str):
             run_block(code)
         except Exception as e:
             with print_lock:
-                print(f"[Thread Error] {e}")
+                safe_print(f"[Thread Error] {e}")
 
         dbg(f"[{datetime.now()}] [{t.name}] finished execution.")
 
