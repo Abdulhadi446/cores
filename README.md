@@ -66,3 +66,5 @@
 ## Tagline
 
 **Cores – Unlocking the Full Potential of Your CPU**
+
+[DOCUMENTATION](DOCUMENTATION.md)
