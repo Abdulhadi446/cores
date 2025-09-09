@@ -1,6 +1,8 @@
 max
 py,python
 
+debug off
+
 pub_var = {'x': 10, 'y': 20, 'vel_x': 3, 'vel_y': 2, 'width':800, 'height': 600}
 pub_json = {"ball_color": "red", "score": 0}
 pub_array = [1, 2, 3, 4, 5]

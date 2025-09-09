@@ -26,7 +26,7 @@ def wait(threads_list):
 
 import processcode
 
-def main(paths: str):
+def main(paths: str, is_debug):
     with open(paths, "r") as file:
         data_array = file.read().splitlines()
 
@@ -34,6 +34,8 @@ def main(paths: str):
     utils.DATA = data
     utils.DATA_ARRAY = data_array
     utils.WAIT = data.endswith('wait')
+
+    processcode.assign_debug(is_debug)
 
     # --- Extract pub_var ---
     processcode.extract_pub_vars_from_module(data_array)
@@ -64,4 +66,4 @@ def main(paths: str):
 
 
 if __name__ == "__main__":
-    main("app.crs")
+    main("app.crs", 'off')

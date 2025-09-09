@@ -1,4 +1,4 @@
-# Cores – Harness the Full Power of Your CPU
+# Cores documentaion
 
 **Cores** is a lightweight experimental programming language inspired by **CUDA** concepts but designed to run directly on CPU threads. It is built for experimenting with **parallel execution**, **thread variables**, and **low-level concurrency** using a simple, Python-like syntax.
 
@@ -78,7 +78,8 @@ print(PUB_STR) # RM-LINE
 ## Example Code
 
 ```cores
-max py
+max
+py
 
 pub_var = 0
 
@@ -136,3 +137,11 @@ Bye!
 - `pub_var`, `pub_bool`, `pub_int`, `pub_float`, `pub_str`, `pub_array`, `pub_json`
 - `PUB_VAR`, `PUB_BOOL`, `PUB_INT`, `PUB_FLOAT`, `PUB_STR`, `PUB_ARRAY`, `PUB_JSON`
 - Thread Special Variables: `THREAD-NAME`, `THREAD-NUMBER`, `THREAD-NATIVE-ID`, `THREAD-IS-ALIVE`, `THREAD-DAEMON`, `THREAD-IDENT`
+
+## Other Docs
+
+[Extended Documentation](docs/extended.md)
+
+[How to use cores](docs/extended.md)
+
+[Owner](docs/owner.md)

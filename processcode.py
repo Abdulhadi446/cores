@@ -1,4 +1,5 @@
 import ast
+
 import utils
 from utils import dbg
 
@@ -134,3 +135,22 @@ def process_code(code: str):
 
     # Return the final code
     return "\n".join(final_lines)
+
+def assign_debug(is_debug: str):
+    """Set utils.DEBUG based on input or fallback to utils.DATA_ARRAY."""
+    is_debug = (is_debug or "").strip().lower()
+
+    if is_debug == "on":
+        utils.DEBUG = True
+    elif is_debug == "off":
+        utils.DEBUG = False
+    else:
+        # fallback: check utils.DATA_ARRAY
+        for line in utils.DATA_ARRAY:
+            line = line.strip().lower()
+            if line == "debug on":
+                utils.DEBUG = True
+                break
+            elif line == "debug off":
+                utils.DEBUG = False
+                break

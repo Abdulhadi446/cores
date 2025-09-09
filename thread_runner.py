@@ -19,7 +19,7 @@ def run_in_process(code: str, lang: str):
         # Local debug function
         def dbg(msg):
             try:
-                if DEBUG:
+                if utils.DEBUG:
                     with print_lock:
                         safe_print(msg)
             except:
