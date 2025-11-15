@@ -68,3 +68,5 @@
 **Cores – Unlocking the Full Potential of Your CPU**
 
 [DOCUMENTATION](DOCUMENTATION.md)
+
+### [Donate](https://ko-fi.com/sodeom)
